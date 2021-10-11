@@ -19,9 +19,6 @@ use Symfony\Flex\Recipe;
  * Checks to see if the mailer service exists.
  *
  * @author Ryan Weaver <ryan@knpuniversity.com>
- *
- * @internal
- * @final
  */
 class CheckForMailerPass implements CompilerPassInterface
 {

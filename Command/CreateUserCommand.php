@@ -81,7 +81,7 @@ EOT
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $username = $input->getArgument('username');
         $email = $input->getArgument('email');

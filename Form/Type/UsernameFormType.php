@@ -20,8 +20,6 @@ use Symfony\Component\Form\FormBuilderInterface;
  * Form type for representing a UserInterface instance by its username string.
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
- *
- * @final
  */
 class UsernameFormType extends AbstractType
 {
@@ -32,6 +30,8 @@ class UsernameFormType extends AbstractType
 
     /**
      * Constructor.
+     *
+     * @param UserToUsernameTransformer $usernameTransformer
      */
     public function __construct(UserToUsernameTransformer $usernameTransformer)
     {
@@ -52,6 +52,16 @@ class UsernameFormType extends AbstractType
     public function getParent()
     {
         return TextType::class;
+    }
+
+    // BC for SF < 3.0
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->getBlockPrefix();
     }
 
     /**

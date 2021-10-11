@@ -1,3 +1,14 @@
+group:
+    edit:
+        submit: 'Actualizar grupo'
+    show:
+        name: 'Nombre de grupo'
+    new:
+        submit: 'Crear grupo'
+    flash:
+        updated: 'El grupo ha sido actualizado.'
+        created: 'El grupo ha sido creado.'
+        deleted: 'El grupo ha sido borrado.'
 security:
     login:
         username: 'Nombre de usuario'
@@ -29,7 +40,7 @@ registration:
             ¡Hola %username%!
 
             Para completar la validación de tu cuenta, por favor visita %confirmationUrl%
-
+            
             Este enlace sólo puede utilizarse una vez para validar tu cuenta.
 
             Atentamente,
@@ -43,6 +54,7 @@ resetting:
         Si no recibes un correo electrónico, comprueba tu carpeta de correo no deseado o inténtalo de nuevo.
 
     request:
+        invalid_username: El usuario o correo electrónico "%username%" no existe.
         username: 'Nombre de usuario o correo electrónico'
         submit: 'Restablecer contraseña'
     reset:
@@ -65,6 +77,7 @@ layout:
     register: Registrar
     logged_in_as: 'Identificado como %username%'
 form:
+    group_name: 'Nombre de grupo'
     username: 'Nombre de usuario'
     email: Email
     current_password: 'Contraseña actual'

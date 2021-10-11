@@ -11,7 +11,6 @@
 
 namespace FOS\UserBundle\Controller;
 
-use FOS\UserBundle\CompatibilityUtil;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
@@ -20,21 +19,19 @@ use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Controller managing the registration.
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
- *
- * @final
  */
 class RegistrationController extends AbstractController
 {
@@ -45,13 +42,15 @@ class RegistrationController extends AbstractController
 
     public function __construct(EventDispatcherInterface $eventDispatcher, FactoryInterface $formFactory, UserManagerInterface $userManager, TokenStorageInterface $tokenStorage)
     {
-        $this->eventDispatcher = CompatibilityUtil::upgradeEventDispatcher($eventDispatcher);
+        $this->eventDispatcher = $eventDispatcher;
         $this->formFactory = $formFactory;
         $this->userManager = $userManager;
         $this->tokenStorage = $tokenStorage;
     }
 
     /**
+     * @param Request $request
+     *
      * @return Response
      */
     public function registerAction(Request $request)
@@ -96,9 +95,9 @@ class RegistrationController extends AbstractController
             }
         }
 
-        return $this->render('@FOSUser/Registration/register.html.twig', [
+        return $this->render('@FOSUser/Registration/register.html.twig', array(
             'form' => $form->createView(),
-        ]);
+        ));
     }
 
     /**
@@ -119,15 +118,16 @@ class RegistrationController extends AbstractController
             return new RedirectResponse($this->container->get('router')->generate('fos_user_security_login'));
         }
 
-        return $this->render('@FOSUser/Registration/check_email.html.twig', [
+        return $this->render('@FOSUser/Registration/check_email.html.twig', array(
             'user' => $user,
-        ]);
+        ));
     }
 
     /**
      * Receive the confirmation token from user email provider, login the user.
      *
-     * @param string $token
+     * @param Request $request
+     * @param string  $token
      *
      * @return Response
      */
@@ -169,10 +169,10 @@ class RegistrationController extends AbstractController
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->render('@FOSUser/Registration/confirmed.html.twig', [
+        return $this->render('@FOSUser/Registration/confirmed.html.twig', array(
             'user' => $user,
             'targetUrl' => $this->getTargetUrlFromSession($request->getSession()),
-        ]);
+        ));
     }
 
     /**

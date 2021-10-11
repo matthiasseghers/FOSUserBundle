@@ -1,3 +1,14 @@
+group:
+    edit:
+        submit: グループの更新
+    show:
+        name: グループ名
+    new:
+        submit: グループの作成
+    flash:
+        updated: グループが更新されました
+        created: グループが作成されました
+        deleted: グループが削除されました
 security:
     login:
         username: ユーザー名
@@ -64,6 +75,7 @@ layout:
     register: 登録
     logged_in_as: '%username% でログイン中'
 form:
+    group_name: グループ名
     username: ユーザー名
     email: メールアドレス
     current_password: 現在のパスワード

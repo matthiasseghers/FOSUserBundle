@@ -1,3 +1,14 @@
+group:
+    edit:
+        submit: 'Ažuriraj grupu'
+    show:
+        name: 'Ime grupe'
+    new:
+        submit: 'Spremi grupu'
+    flash:
+        updated: 'Grupa je uspješno ažurirana.'
+        created: 'Grupa je uspješno kreirana.'
+        deleted: 'Grupa je uspješno spremljena.'
 security:
     login:
         username: 'Korisničko ime'
@@ -58,6 +69,7 @@ layout:
     register: Registracija
     logged_in_as: 'Prijavljen kao %username%'
 form:
+    group_name: 'Ime grupe'
     username: 'Korisničko ime'
     email: Email
     current_password: 'Trenutna lozinka'

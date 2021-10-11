@@ -11,19 +11,14 @@
 
 namespace FOS\UserBundle\EventListener;
 
-use FOS\UserBundle\CompatibilityUtil;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\UserEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Security\LoginManagerInterface;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Exception\AccountStatusException;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
-/**
- * @internal
- * @final
- */
 class AuthenticationListener implements EventSubscriberInterface
 {
     /**
@@ -39,7 +34,8 @@ class AuthenticationListener implements EventSubscriberInterface
     /**
      * AuthenticationListener constructor.
      *
-     * @param string $firewallName
+     * @param LoginManagerInterface $loginManager
+     * @param string                $firewallName
      */
     public function __construct(LoginManagerInterface $loginManager, $firewallName)
     {
@@ -52,19 +48,20 @@ class AuthenticationListener implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return [
+        return array(
             FOSUserEvents::REGISTRATION_COMPLETED => 'authenticate',
             FOSUserEvents::REGISTRATION_CONFIRMED => 'authenticate',
             FOSUserEvents::RESETTING_RESET_COMPLETED => 'authenticate',
-        ];
+        );
     }
 
     /**
-     * @param string $eventName
+     * @param FilterUserResponseEvent  $event
+     * @param string                   $eventName
+     * @param EventDispatcherInterface $eventDispatcher
      */
     public function authenticate(FilterUserResponseEvent $event, $eventName, EventDispatcherInterface $eventDispatcher)
     {
-        $eventDispatcher = CompatibilityUtil::upgradeEventDispatcher($eventDispatcher);
         try {
             $this->loginManager->logInUser($this->firewallName, $event->getUser(), $event->getResponse());
 

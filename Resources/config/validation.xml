@@ -63,7 +63,7 @@
                 </option>
             </constraint>
             <constraint name="Length">
-                <option name="min">2</option>
+                <option name="min">8</option>
                 <option name="max">4096</option>
                 <option name="minMessage">fos_user.password.short</option>
                 <option name="groups">
@@ -72,6 +72,22 @@
                     <value>ResetPassword</value>
                     <value>ChangePassword</value>
                 </option>
+            </constraint>
+        </property>
+    </class>
+
+    <class name="FOS\UserBundle\Model\Group">
+        <property name="name">
+            <constraint name="NotBlank">
+                <option name="message">fos_user.group.blank</option>
+                <option name="groups">Registration</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">fos_user.group.short</option>
+                <option name="max">180</option>
+                <option name="maxMessage">fos_user.group.long</option>
+                <option name="groups">Registration</option>
             </constraint>
         </property>
     </class>

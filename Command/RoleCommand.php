@@ -51,7 +51,7 @@ abstract class RoleCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $username = $input->getArgument('username');
         $role = $input->getArgument('role');

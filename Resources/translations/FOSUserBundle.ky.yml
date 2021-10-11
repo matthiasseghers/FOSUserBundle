@@ -1,3 +1,14 @@
+group:
+    edit:
+        submit: 'Группаны жаңылоо'
+    show:
+        name: 'Группанын аталышы'
+    new:
+        submit: 'Группаны түзүү'
+    flash:
+        updated: 'Группа жаңыланды'
+        created: 'Группа түзүлдү'
+        deleted: 'Группа өчүрүлдү'
 security:
     login:
         username: 'Колдонуучунун аты'
@@ -56,6 +67,7 @@ layout:
     register: Регистрация
     logged_in_as: 'Сиз %username% аты менен кирдиңиз'
 form:
+    group_name: 'Группанын аты'
     username: 'Колдонуучунун аты'
     email: 'Электрондук почтасы'
     current_password: 'Учурдагы сырдык сөз'

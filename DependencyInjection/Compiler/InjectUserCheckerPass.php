@@ -19,9 +19,6 @@ use Symfony\Component\DependencyInjection\Reference;
  * Injects firewall's UserChecker into LoginManager.
  *
  * @author Gocha Ossinkine <ossinkine@ya.ru>
- *
- * @internal
- * @final
  */
 class InjectUserCheckerPass implements CompilerPassInterface
 {

@@ -1,3 +1,14 @@
+group:
+    edit:
+        submit: 'Update group'
+    show:
+        name: 'Group name'
+    new:
+        submit: 'Create group'
+    flash:
+        updated: 'The group has been updated.'
+        created: 'The group has been created.'
+        deleted: 'The group has been deleted.'
 security:
     login:
         username: Username
@@ -65,6 +76,7 @@ layout:
     register: Register
     logged_in_as: 'Logged in as %username%'
 form:
+    group_name: 'Group name'
     username: Username
     email: Email
     current_password: 'Current password'

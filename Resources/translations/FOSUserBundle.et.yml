@@ -1,3 +1,14 @@
+group:
+    edit:
+        submit: 'Muuda grupp'
+    show:
+        name: 'Grupi nimi'
+    new:
+        submit: 'Uus grupp'
+    flash:
+        updated: 'Grupp muudetud.'
+        created: 'Uus grupp loodud.'
+        deleted: 'Grupp kustutatud.'
 security:
     login:
         username: Kasutajanimi
@@ -31,7 +42,7 @@ registration:
             Tere %username%!
 
             Konto aktiveerimiseks palun avage viide %confirmationUrl%
-
+            
             Seda viidet saate kasutada vaid ühe korra konto valideerimiseks.
 
             Parimatega,
@@ -39,9 +50,9 @@ registration:
 
 resetting:
     check_email: |
-        E-mail on saadetud. Selles sisaldub viide, mis tuleb salasõna muutmiseks avada.
+        E-mail on saadetud. Selles sisaldub viide, mis tuleb salasõna muutmiseks avada.        
         Märkus: Saate uue parooli tellida vaid korra %tokenLifetime% tunni jooksul.
-
+        
         Kui te ei e-maili ei saanud, kontrollige oma spämmikausta või proovige uuesti.
     request:
         username: Kasutajanimi või e-mail
@@ -65,6 +76,7 @@ layout:
     register: Registreeri
     logged_in_as: 'Sisse logitud: %username%'
 form:
+    group_name: 'Grupi nimi'
     username: Kasutajanimi
     email: E-mail
     current_password: 'Vana salasõna'

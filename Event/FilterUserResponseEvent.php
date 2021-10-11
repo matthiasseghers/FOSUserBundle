@@ -15,15 +15,16 @@ use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @final
- */
 class FilterUserResponseEvent extends UserEvent
 {
     private $response;
 
     /**
      * FilterUserResponseEvent constructor.
+     *
+     * @param UserInterface $user
+     * @param Request       $request
+     * @param Response      $response
      */
     public function __construct(UserInterface $user, Request $request, Response $response)
     {
@@ -41,6 +42,8 @@ class FilterUserResponseEvent extends UserEvent
 
     /**
      * Sets a new response object.
+     *
+     * @param Response $response
      */
     public function setResponse(Response $response)
     {

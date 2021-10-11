@@ -19,9 +19,6 @@ use Symfony\Component\DependencyInjection\Reference;
  * Inject RememberMeServices into LoginManager.
  *
  * @author Vasily Khayrulin <sirianru@gmail.com>
- *
- * @internal
- * @final
  */
 class InjectRememberMeServicesPass implements CompilerPassInterface
 {

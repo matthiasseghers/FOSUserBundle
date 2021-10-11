@@ -1,3 +1,14 @@
+group:
+    edit:
+        submit: 'Taldea eguneratu'
+    show:
+        name: 'Taldearen izena'
+    new:
+        submit: 'Taldea sortu'
+    flash:
+        updated: 'Taldea eguneratua izan da.'
+        created: 'Taldea sortua izan da.'
+        deleted: 'Taldea ezabatua izan da.'
 security:
     login:
         username: 'Erabiltzaile izena'
@@ -65,6 +76,7 @@ layout:
     register: 'Izena eman'
     logged_in_as: '%username% bezala konektatua'
 form:
+    group_name: 'Taldearen izena'
     username: 'Erabiltzaile izena'
     email: E-posta
     current_password: 'Oraingo pasahitza'

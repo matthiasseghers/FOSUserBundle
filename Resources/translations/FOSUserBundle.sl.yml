@@ -1,3 +1,14 @@
+group:
+    edit:
+        submit: Shrani
+    show:
+        name: 'Ime skupine'
+    new:
+        submit: Shrani
+    flash:
+        updated: 'Skupina je bila uspešno shranjena.'
+        created: 'Skupina je bila uspešno ustvarjena.'
+        deleted: 'Skupina je bila uspešno izbrisana.'
 security:
     login:
         username: 'Uporabniško ime'
@@ -58,6 +69,7 @@ layout:
     register: Registracija
     logged_in_as: 'Prijavljen kot %username%'
 form:
+    group_name: 'Ime skupine'
     username: 'Uporabniško ime'
     email: Email
     current_password: 'Trenutno geslo'

@@ -11,7 +11,6 @@
 
 namespace FOS\UserBundle\Controller;
 
-use FOS\UserBundle\CompatibilityUtil;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseNullableUserEvent;
@@ -22,18 +21,16 @@ use FOS\UserBundle\Mailer\MailerInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use FOS\UserBundle\Util\TokenGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Controller managing the resetting of the password.
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
- *
- * @final
  */
 class ResettingController extends AbstractController
 {
@@ -49,11 +46,16 @@ class ResettingController extends AbstractController
     private $retryTtl;
 
     /**
-     * @param int $retryTtl
+     * @param EventDispatcherInterface $eventDispatcher
+     * @param FactoryInterface         $formFactory
+     * @param UserManagerInterface     $userManager
+     * @param TokenGeneratorInterface  $tokenGenerator
+     * @param MailerInterface          $mailer
+     * @param int                      $retryTtl
      */
     public function __construct(EventDispatcherInterface $eventDispatcher, FactoryInterface $formFactory, UserManagerInterface $userManager, TokenGeneratorInterface $tokenGenerator, MailerInterface $mailer, $retryTtl)
     {
-        $this->eventDispatcher = CompatibilityUtil::upgradeEventDispatcher($eventDispatcher);
+        $this->eventDispatcher = $eventDispatcher;
         $this->formFactory = $formFactory;
         $this->userManager = $userManager;
         $this->tokenGenerator = $tokenGenerator;
@@ -71,6 +73,8 @@ class ResettingController extends AbstractController
 
     /**
      * Request reset user password: submit form and send email.
+     *
+     * @param Request $request
      *
      * @return Response
      */
@@ -118,11 +122,13 @@ class ResettingController extends AbstractController
             }
         }
 
-        return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email', ['username' => $username]));
+        return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email', array('username' => $username)));
     }
 
     /**
      * Tell the user to check his email provider.
+     *
+     * @param Request $request
      *
      * @return Response
      */
@@ -135,15 +141,16 @@ class ResettingController extends AbstractController
             return new RedirectResponse($this->generateUrl('fos_user_resetting_request'));
         }
 
-        return $this->render('@FOSUser/Resetting/check_email.html.twig', [
+        return $this->render('@FOSUser/Resetting/check_email.html.twig', array(
             'tokenLifetime' => ceil($this->retryTtl / 3600),
-        ]);
+        ));
     }
 
     /**
      * Reset user password.
      *
-     * @param string $token
+     * @param Request $request
+     * @param string  $token
      *
      * @return Response
      */
@@ -186,9 +193,9 @@ class ResettingController extends AbstractController
             return $response;
         }
 
-        return $this->render('@FOSUser/Resetting/reset.html.twig', [
+        return $this->render('@FOSUser/Resetting/reset.html.twig', array(
             'token' => $token,
             'form' => $form->createView(),
-        ]);
+        ));
     }
 }

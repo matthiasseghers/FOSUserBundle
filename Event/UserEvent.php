@@ -12,8 +12,8 @@
 namespace FOS\UserBundle\Event;
 
 use FOS\UserBundle\Model\UserInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\EventDispatcher\Event;
+use Symfony\Component\HttpFoundation\Request;
 
 class UserEvent extends Event
 {
@@ -29,6 +29,9 @@ class UserEvent extends Event
 
     /**
      * UserEvent constructor.
+     *
+     * @param UserInterface $user
+     * @param Request|null  $request
      */
     public function __construct(UserInterface $user, Request $request = null)
     {

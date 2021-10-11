@@ -54,7 +54,7 @@ class UserManipulator
     public function __construct(UserManagerInterface $userManager, EventDispatcherInterface $dispatcher, RequestStack $requestStack)
     {
         $this->userManager = $userManager;
-        $this->dispatcher = CompatibilityUtil::upgradeEventDispatcher($dispatcher);
+        $this->dispatcher = $dispatcher;
         $this->requestStack = $requestStack;
     }
 

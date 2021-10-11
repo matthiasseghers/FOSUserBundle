@@ -1,3 +1,14 @@
+group:
+    edit:
+        submit: 'Oppdater gruppe'
+    show:
+        name: Gruppenavn
+    new:
+        submit: 'Opprett gruppe'
+    flash:
+        updated: 'Gruppen har blitt oppdatert'
+        created: 'Gruppen har blitt opprettet'
+        deleted: 'Gruppen har blitt slettet'
 security:
     login:
         username: Brukernavn
@@ -58,6 +69,7 @@ layout:
     register: Registrer
     logged_in_as: 'Logget inn som %username%'
 form:
+    group_name: Gruppenavn
     username: Brukernavn
     email: Epost
     current_password: 'Nåværende passord'

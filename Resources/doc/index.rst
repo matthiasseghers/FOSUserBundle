@@ -261,7 +261,7 @@ in your application:
     # app/config/security.yml
     security:
         encoders:
-            FOS\UserBundle\Model\UserInterface: auto
+            FOS\UserBundle\Model\UserInterface: bcrypt
 
         role_hierarchy:
             ROLE_ADMIN:       ROLE_USER
@@ -371,7 +371,7 @@ Only four configuration's nodes are required to use the bundle:
 .. note::
 
     FOSUserBundle uses a compiler pass to register mappings for the base
-    User model classes with the object manager that you configured
+    User and Group model classes with the object manager that you configured
     it to use. (Unless specified explicitly, this is the default manager
     of your doctrine configuration.)
 
@@ -448,6 +448,7 @@ The following documents are available:
     logging_by_username_or_email
     form_type
     emails
+    groups
     doctrine
     overriding_validation
     canonicalizer

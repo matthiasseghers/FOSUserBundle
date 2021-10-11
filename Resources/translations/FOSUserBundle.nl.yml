@@ -1,3 +1,14 @@
+group:
+    edit:
+        submit: 'Groep bijwerken'
+    show:
+        name: 'Groep naam'
+    new:
+        submit: 'Groep aanmaken'
+    flash:
+        updated: 'De groep is bijgewerkt.'
+        created: 'De groep is aangemaakt.'
+        deleted: 'De groep is verwijderd.'
 security:
     login:
         username: Gebruikersnaam
@@ -65,6 +76,7 @@ layout:
     register: Registreer
     logged_in_as: 'Ingelogd als %username%'
 form:
+    group_name: 'Groep naam'
     username: Gebruikersnaam
     email: E-mail
     current_password: 'Huidig wachtwoord'

@@ -1,3 +1,15 @@
+group:
+    edit:
+        submit: 'تحديث المجموعة'
+    show:
+        name: 'إسم المجموعة'
+    new:
+        submit: 'إنشاء مجموعة'
+    flash:
+        updated: 'تم تحديث المجموعة'
+        created: 'تم إنشاء المجموعة'
+        deleted: 'تم حـذف المجموعة'
+
 security:
     login:
         username: 'إسم المستخدم'
@@ -69,6 +81,7 @@ layout:
     logged_in_as: 'تم الدخول بإسم %username%'
 
 form:
+    group_name: 'إسم المجموعة'
     username: 'إسم المستخدم'
     email: 'البريد الإلكتروني'
     current_password: 'كلمة المرور الحالية'
